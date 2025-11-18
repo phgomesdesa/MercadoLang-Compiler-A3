@@ -1,74 +1,128 @@
-# 🛒 MercadoLang — Mini Compilador em Java
+# 🛒 MercadoLang — Compilador Completo em Java  
+### 📘 *Projeto A3 – Construção de Compiladores*
 
-## 👤 Autores
-- **Pedro Henrique de Sá Gomes** — RA: **12524232477**
+---
+
+## 👤 Autores  
+- **Pedro Henrique de Sá Gomes** — RA: **12524232477**  
 - **Felipe de Ornelas Chaves** — RA: **12525178266**
 
-Este projeto implementa um **compilador completo**, desenvolvido em Java, para uma linguagem simples inspirada em operações de um mercado.  
-A linguagem permite adicionar itens, vender, atualizar, listar, mostrar estoque, mostrar faturamento e gerar um relatório final.
+---
 
-O objetivo é demonstrar, na prática, todas as fases fundamentais de um compilador:
+# 📌 Sobre o Projeto
 
-- **Análise Léxica (Lexer)**
-- **Análise Sintática (Parser)**
-- **AST (Árvore Sintática Abstrata)**
-- **Análise Semântica**
-- **Tabela de Símbolos**
-- **Execução**
-- **Relatório Final**
+O **MercadoLang** é uma linguagem de programação criada para fins acadêmicos, projetada para simular operações de mercado como cadastro de produtos, vendas, atualização de preços e relatórios.
+
+Este projeto implementa **um compilador real**, cobrindo todas as etapas fundamentais:
+
+✔ Análise Léxica  
+✔ Análise Sintática  
+✔ Construção da AST  
+✔ Análise Semântica  
+✔ Tabela de Símbolos  
+✔ Execução  
+✔ Relatório Final  
+✔ Extensões de Linguagem  
+
+O objetivo é demonstrar, na prática, como funciona o fluxo completo de um compilador profissional — mas com uma linguagem simples e intuitiva.
 
 ---
 
-# 📂 Estrutura do Projeto
+# 📑 Sumário
 
-/src
-├── Lexer.java
-├── Parser.java
-├── Ast.java
-├── SymbolTable.java
-├── Semantic.java
-├── Main.java
-└── mercado.txt (arquivo de entrada)
-
-
-
-O arquivo `mercado.txt` contém o código-fonte da linguagem MercadoLang que será compilado e executado.
+1. [Objetivo do Projeto](#-objetivo-do-projeto)  
+2. [Arquitetura do Compilador](#-arquitetura-do-compilador)  
+3. [Como Executar](#-como-executar)  
+4. [Sintaxe da Linguagem](#-sintaxe-da-linguagem)  
+5. [Exemplo Completo de Entrada](#-exemplo-completo-de-entrada)  
+6. [Fluxo do Compilador](#-fluxo-do-compilador)  
+7. [Estrutura de Arquivos](#-estrutura-de-arquivos)  
+8. [Glossário para Prova](#-glossário-para-prova)  
+9. [Possíveis Extensões Futuras](#-possíveis-extensões-futuras)  
+10. [Licença](#-licença)  
 
 ---
 
-# 🚀 Como Executar
+# 🎯 Objetivo do Projeto
 
-### ✔ Requisitos:
-- Java 8+
-- Qualquer IDE (NetBeans, IntelliJ, Eclipse) ou terminal
+Criar um compilador funcional, capaz de:
 
-### ✔ Passos:
-1. Coloque seu arquivo de entrada na pasta:
-2. Execute a classe **Main.java**
+- Interpretar uma linguagem própria (MercadoLang)  
+- Entender comandos textuais  
+- Validar significados (semântica)  
+- Executar ações reais (venda, preço, estoque)  
+- Gerar relatórios  
+- Auxiliar no entendimento das fases de um compilador real  
+
+Este projeto demonstra **a pipeline completa de compilação**, servindo tanto para fins de aprendizado quanto como base para linguagens mais avançadas.
+
+---
+
+# 🧠 Arquitetura do Compilador
+
+O MercadoLang possui **6 módulos principais**:
+
+### 1️⃣ **Lexer (Análise Léxica)**  
+Converte o arquivo `.txt` em tokens como:  
+- `ADICIONAR`  
+- `STRING`  
+- `NUMBER`  
+- `PRECO`  
+
+### 2️⃣ **Parser (Análise Sintática)**  
+Valida a ordem dos tokens e gera a AST.
+
+### 3️⃣ **AST (Árvore Sintática Abstrata)**  
+Classes que representam os comandos da linguagem.
+
+### 4️⃣ **Semantic (Análise Semântica)**  
+Valida regras como:  
+- Preço > 0  
+- Item existir antes de vender  
+- Quantidade válida  
+
+### 5️⃣ **SymbolTable (Tabela de Símbolos)**  
+É a “memória” da linguagem, onde ficam itens, preços, estoque.
+
+### 6️⃣ **Executor / Runtime**  
+Executa efetivamente as operações.
+
+---
+
+# 💻 Como Executar
+
+### ✔ Pré-requisitos
+- Java 8+  
+- IntelliJ, NetBeans ou terminal  
+
+### ✔ Passo a passo
+
+1. Coloque seu código da linguagem em: src/mercado.txt
+2. Execute: 
 3. O compilador irá:
-    - Ler o arquivo
-    - Gerar tokens
-    - Criar a AST
-    - Executar os comandos
-    - Exibir resultados + relatório final
+- Ler o arquivo  
+- Gerar tokens  
+- Criar AST  
+- Validar semântica  
+- Executar operações  
+- Imprimir relatório final  
 
 ---
 
-# 🛠 Linguagem MercadoLang
+# 🛠 Sintaxe da Linguagem (MercadoLang)
 
-Abaixo estão todos os comandos suportados pela linguagem.
+## ➕ ADICIONAR ITEM
+## 🛒 VENDER ITEM
+## ❌ REMOVER ITEM
+## 📋 LISTAR ITENS
+## 📦 MOSTRAR ESTOQUE
+## 💰 MOSTRAR FATURAMENTO
 
-## 📌 ADICIONAR ITEM
-## 📌 VENDER ITEM
-## 📌 ATUALIZAR PREÇO
-## 📌 REMOVER ITEM
-## 📌 LISTAR ITENS
-## 📌 MOSTRAR ESTOQUE
-## 📌 MOSTRAR FATURAMENTO
+
 
 ---
 
-# 📘 Exemplo Completo de Arquivo `mercado.txt`
+# 📘 Exemplo Completo de Entrada
 
 ```txt
 ADICIONAR "Banana" PRECO 2.50 ESTOQUE 20
@@ -80,5 +134,43 @@ MOSTRAR ESTOQUE
 MOSTRAR FATURAMENTO
 
 
++--------------+
+|   Arquivo    |
+| mercado.txt  |
++------^-------+
+       |
+       |
++------|-------+
+|     Lexer    |  → Converte caracteres em TOKENS
++------^-------+
+       |
++------|-------+
+|     Parser   |  → Monta a AST validando a gramática
++------^-------+
+       |
++------|-------+
+|      AST     |  → Representação do programa
++------^-------+
+       |
++------|-------+
+|    Semantic  |  → Valida e executa ações reais
++------^-------+
+       |
++------|-------+
+|  Runtime/Out | → Resultados + relatório final
++--------------+
 
-# MercadoLang-Compiler-A3
+
+/src
+ ├── Lexer.java
+ ├── Parser.java
+ ├── Ast.java
+ ├── SymbolTable.java
+ ├── Semantic.java
+ ├── Main.java
+ └── mercado.txt
+
+
+
+
+
